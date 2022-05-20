@@ -14,7 +14,7 @@ public class MyServiceFactory {
 	private static ProprietarioService proprietarioServiceInstance = null;
 	private static AutomobileService automobileServiceInstance = null;
 
-	public static ProprietarioService getProprietarioServiceINstance() {
+	public static ProprietarioService getProprietarioServiceInstance() {
 		if (proprietarioServiceInstance == null) {
 			proprietarioServiceInstance = new ProprietarioServiceImpl();
 			try {
@@ -27,7 +27,7 @@ public class MyServiceFactory {
 		return proprietarioServiceInstance;
 	}
 
-	public static AutomobileService getAutomobileInstance() {
+	public static AutomobileService getAutomobileServiceInstance() {
 		if (automobileServiceInstance == null) {
 			automobileServiceInstance = new AutomobileServiceImpl();
 			try {

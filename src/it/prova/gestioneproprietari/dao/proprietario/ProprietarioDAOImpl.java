@@ -28,19 +28,22 @@ public class ProprietarioDAOImpl implements ProprietarioDAO{
 	}
 
 	@Override
-	public void update(Proprietario proprietario) throws Exception {
+	public void update(Proprietario proprietarioInstance) throws Exception {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void insert(Proprietario proprietario) throws Exception {
+	public void insert(Proprietario proprietarioInstance) throws Exception {
 		// TODO Auto-generated method stub
+		if(proprietarioInstance == null)
+			throw new Exception("Valore in input non valido");
 		
+		entityManager.persist(proprietarioInstance);
 	}
 
 	@Override
-	public void delete(Proprietario proprietario) throws Exception {
+	public void delete(Proprietario proprietarioInstance) throws Exception {
 		// TODO Auto-generated method stub
 		
 	}
