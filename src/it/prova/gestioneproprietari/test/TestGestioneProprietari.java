@@ -21,16 +21,21 @@ public class TestGestioneProprietari {
 		try {
 
 			// ora con il service posso fare tutte le invocazioni che mi servono
+			
+			System.out.println(
+					"In tabella Proprietario ci sono " + proprietarioService.listAllProprietari().size() + " elementi");
+			System.out.println(
+					"In tabella Automobile ci sono " + automobileService.listAllAutomobili().size() + " elementi");
 
 			/*testInserisciProprietario(proprietarioService);
 			System.out.println(
 					"In tabella Proprietario ci sono " + proprietarioService.listAllProprietari().size() + " elementi");*/
 			
-			testInserisciAutomobile(automobileService, proprietarioService);
+			/*testInserisciAutomobile(automobileService, proprietarioService);
 			System.out.println(
-					"In tabella Automobile ci sono " + automobileService.listAllAutomobili().size() + " elementi");
+					"In tabella Automobile ci sono " + automobileService.listAllAutomobili().size() + " elementi");*/
 			
-			
+			testCaricaSingoloProprietario(proprietarioService);
 			
 			
 			
@@ -105,5 +110,203 @@ public class TestGestioneProprietari {
 		System.out.println(
 				"................................... testInserisciAutomobile: Fine..................................");
 	}
+	
+	public static void testCaricaSingoloProprietario(ProprietarioService proprietarioService) throws Exception{
+		System.out.println(
+				"................................... testCaricaSingoloProprietario: Inzio..................................");
+		
+		List<Proprietario> listaProprietari = proprietarioService.listAllProprietari();
+		if(listaProprietari.isEmpty())
+			throw new RuntimeException("Non ci sono proprietari nel DB");
+		
+		Long idRicercaProprietario = 2L;
+		
+		System.out.println(proprietarioService.caricaSingoloProprietario(idRicercaProprietario));
+		
+		System.out.println(
+				"................................... testCaricaSingoloProprietario: Fine..................................");
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
