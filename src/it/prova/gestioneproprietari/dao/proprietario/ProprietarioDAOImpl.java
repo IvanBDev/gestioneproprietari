@@ -58,7 +58,7 @@ public class ProprietarioDAOImpl implements ProprietarioDAO{
 	@Override
 	public List<Proprietario> findAllOwnersHaveCarsImmatricolataDa(Date dataInput) throws Exception {
 		// TODO Auto-generated method stub
-		TypedQuery<Proprietario> query = entityManager.createQuery("FROM Automobile a JOIN a.automobile WHERE a.annoImmatricolazione > ?1", Proprietario.class);
+		TypedQuery<Proprietario> query = entityManager.createQuery("SELECT DISTINCT p FROM Proprietario p JOIN p.automobili a WHERE a.annoImmatricolazione > ?1", Proprietario.class);
 		
 		return query.setParameter(1, dataInput).getResultList();
 	}

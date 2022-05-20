@@ -45,9 +45,9 @@ public class TestGestioneProprietari {
 			
 			//testRimuoviProprietario(proprietarioService);
 			
-			testRimuoviAutomobile(proprietarioService, automobileService);
+			//testRimuoviAutomobile(proprietarioService, automobileService);
 			
-			
+			//testTrovaProprietariConAutomobileImmatricolataDa(proprietarioService, automobileService);
 			
 			
 
@@ -241,7 +241,19 @@ public class TestGestioneProprietari {
 				"................................... testRimuoviAutomobile: Fine..................................");
 	}
 	
-	
+	public static void testTrovaProprietariConAutomobileImmatricolataDa(ProprietarioService proprietarioService,
+			AutomobileService automobileService) throws Exception {
+		System.out.println(
+				"................................... testTrovaProprietariConAutomobileImmatricolataDa: Inzio..................................");
+		
+		Date dataPerConfronto = null;
+		dataPerConfronto = new SimpleDateFormat("dd/MM/yyyy").parse("02/02/2017");
+		
+		System.out.println(proprietarioService.trovaProprietariConAutomobileImmatricolataDa(dataPerConfronto));
+		
+		System.out.println(
+				"................................... testTrovaProprietariConAutomobileImmatricolataDa: Inzio..................................");
+	}
 	
 	
 	
