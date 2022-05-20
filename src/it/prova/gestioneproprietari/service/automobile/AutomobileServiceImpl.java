@@ -93,9 +93,29 @@ public class AutomobileServiceImpl implements AutomobileService {
 	}
 
 	@Override
-	public void rimuovi(Automobile automobile) throws Exception {
+	public void rimuovi(Automobile automobileInstance) throws Exception {
 		// TODO Auto-generated method stub
+		// questo è come una connection
+		EntityManager entityManager = EntityManagerUtil.getEntityManager();
 
+		try {
+			// questo è come il MyConnection.getConnection()
+			entityManager.getTransaction().begin();
+
+			// uso l'injection per il dao
+			automobileDAO.setEntityManager(entityManager);
+
+			// eseguo quello che realmente devo fare
+			automobileDAO.update(automobileInstance);
+
+			entityManager.getTransaction().commit();
+		} catch (Exception e) {
+			entityManager.getTransaction().rollback();
+			e.printStackTrace();
+			throw e;
+		} finally {
+			EntityManagerUtil.closeEntityManager(entityManager);
+		}
 	}
 
 	@Override
