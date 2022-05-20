@@ -21,7 +21,7 @@ public class AutomobileDAOImpl implements AutomobileDAO {
 	@Override
 	public Automobile get(Long id) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return entityManager.find(Automobile.class, id);
 	}
 
 	@Override
