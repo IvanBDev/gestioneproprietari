@@ -43,9 +43,12 @@ public class AutomobileDAOImpl implements AutomobileDAO {
 	}
 
 	@Override
-	public void delete(Automobile automobile) throws Exception {
+	public void delete(Automobile automobileInstance) throws Exception {
 		// TODO Auto-generated method stub
-
+		if(automobileInstance == null)
+			throw new Exception("Valore in input non valido");
+		
+		entityManager.remove(entityManager.merge(automobileInstance));
 	}
 
 	@Override
