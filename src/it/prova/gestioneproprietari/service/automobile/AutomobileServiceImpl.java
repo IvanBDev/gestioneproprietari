@@ -2,15 +2,41 @@ package it.prova.gestioneproprietari.service.automobile;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+
+import it.prova.gestioneproprietari.dao.EntityManagerUtil;
 import it.prova.gestioneproprietari.dao.automobile.AutomobileDAO;
 import it.prova.gestioneproprietari.model.Automobile;
 
-public class AutomobileServiceImpl implements AutomobileService{
+public class AutomobileServiceImpl implements AutomobileService {
+
+	private AutomobileDAO automobileDAO;
+
+	@Override
+	public void setAutomobileDAO(AutomobileDAO automobileDAO) throws Exception {
+		// TODO Auto-generated method stub
+		this.automobileDAO = automobileDAO;
+	}
 
 	@Override
 	public List<Automobile> listAllAutomobili() throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		// questo è come una connection
+		EntityManager entityManager = EntityManagerUtil.getEntityManager();
+
+		try {
+			// uso l'injection per il dao
+			automobileDAO.setEntityManager(entityManager);
+
+			// eseguo quello che realmente devo fare
+			return automobileDAO.list();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		} finally {
+			EntityManagerUtil.closeEntityManager(entityManager);
+		}
 	}
 
 	@Override
@@ -22,19 +48,19 @@ public class AutomobileServiceImpl implements AutomobileService{
 	@Override
 	public void aggiorna(Automobile automobile) throws Exception {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void inserisciNuovo(Automobile automobile) throws Exception {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void rimuovi(Automobile automobile) throws Exception {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -47,12 +73,6 @@ public class AutomobileServiceImpl implements AutomobileService{
 	public boolean trovaErrori() throws Exception {
 		// TODO Auto-generated method stub
 		return false;
-	}
-
-	@Override
-	public void setAutomobileDAO(AutomobileDAO automobileDAO) throws Exception {
-		// TODO Auto-generated method stub
-		
 	}
 
 }
