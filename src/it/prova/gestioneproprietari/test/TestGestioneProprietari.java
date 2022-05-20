@@ -43,9 +43,9 @@ public class TestGestioneProprietari {
 			
 			//testAggiornaRecordAutomobile(proprietarioService, automobileService);
 			
-			testRimuoviProprietario(proprietarioService);
+			//testRimuoviProprietario(proprietarioService);
 			
-			
+			testRimuoviAutomobile(proprietarioService, automobileService);
 			
 			
 			
@@ -199,7 +199,7 @@ public class TestGestioneProprietari {
 		
 		List<Proprietario> listaProprietrai = proprietarioService.listAllProprietari();
 		if (listaProprietrai.isEmpty())
-			throw new RuntimeException("testAggiornaAutomobile fallito: non ci sono proprietari a cui collegarci ");
+			throw new RuntimeException("testAggiornaAutomobile fallito: non ci sono proprietari nel DB ");
 		
 		Date dataProprietarioDaRimuovere = null;
 		dataProprietarioDaRimuovere = new SimpleDateFormat("dd/MM/yyyy").parse("31/12/2021");
@@ -215,6 +215,31 @@ public class TestGestioneProprietari {
 				"................................... testRimuoviProprietario: Fine..................................");
 	}
 	
+	public static void testRimuoviAutomobile(ProprietarioService proprietarioService, AutomobileService automobileService) throws Exception{
+		System.out.println(
+				"................................... testRimuoviAutomobile: Inizio..................................");
+		
+		List<Automobile> listaAutomobili = automobileService.listAllAutomobili();
+		if(listaAutomobili.isEmpty())
+			throw new RuntimeException("Non ci sono automobili nel DB");
+		
+		List<Proprietario> listaProprietrai = proprietarioService.listAllProprietari();
+		if (listaProprietrai.isEmpty())
+			throw new RuntimeException("testAggiornaAutomobile fallito: non ci sono proprietari a cui collegarci ");
+		
+		Date dataImmatricolazione = null;
+		dataImmatricolazione = new SimpleDateFormat("dd/MM/yyyy").parse("25/11/2021");
+		
+		Automobile automobileDaRimuovere = new Automobile(6L, "Alfa Romeo", "Compact", "SW450-LP", dataImmatricolazione);
+		
+		automobileService.rimuovi(automobileDaRimuovere);
+		
+		if(automobileService.caricaSingolaAutomobile(automobileDaRimuovere.getId()) != null)
+			throw new RuntimeException("testRimuoviAutomobile fallito: record non cancellato ");
+		
+		System.out.println(
+				"................................... testRimuoviAutomobile: Fine..................................");
+	}
 	
 	
 	
