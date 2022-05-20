@@ -1,5 +1,7 @@
 package it.prova.gestioneproprietari.dao.automobile;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
@@ -65,9 +67,12 @@ public class AutomobileDAOImpl implements AutomobileDAO {
 	}
 
 	@Override
-	public boolean findErrors() throws Exception {
-		// TODO Auto-generated method stub
-		return false;
+	public List<Automobile> findAllOwnersUnderAge() throws Exception {
+		Date annoMinorenni = null;
+		annoMinorenni = new SimpleDateFormat("dd/MM/yyyy").parse("01/01/2004");
+		
+		TypedQuery<Automobile> query = entityManager.createQuery("FROM Automobile a JOIN a.proprietario p WHERE p.dataNascita <= ?1", Automobile.class);
+		return query.setParameter(1, annoMinorenni).getResultList();
 	}
 
 }

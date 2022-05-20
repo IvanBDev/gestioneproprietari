@@ -265,7 +265,7 @@ public class TestGestioneProprietari {
 		
 		List<Automobile> listAutomobili = automobileService.listAllAutomobili();
 		listAutomobili = automobileService.trovaTutteLeVettureConIProprietariConCFCheIniziaPer(inizialeCF);
-		System.out.println(listAutomobili.size());
+		
 		for (Automobile automobiliItem :listAutomobili) {
 			System.out.println(automobiliItem);
 		}
