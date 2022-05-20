@@ -160,9 +160,24 @@ public class AutomobileServiceImpl implements AutomobileService {
 	}
 
 	@Override
-	public boolean trovaErrori() throws Exception {
+	public List<Automobile> trovaProprietariMinorenni() throws Exception {
 		// TODO Auto-generated method stub
-		return false;
+		// questo è come una connection
+				EntityManager entityManager = EntityManagerUtil.getEntityManager();
+
+				try {
+					// uso l'injection per il dao
+					automobileDAO.setEntityManager(entityManager);
+
+					// eseguo quello che realmente devo fare
+					return automobileDAO.findAllOwnersUnderAge();
+
+				} catch (Exception e) {
+					e.printStackTrace();
+					throw e;
+				} finally {
+					EntityManagerUtil.closeEntityManager(entityManager);
+				}
 	}
 
 }

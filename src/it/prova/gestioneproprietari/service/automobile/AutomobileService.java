@@ -19,7 +19,7 @@ public interface AutomobileService {
 
 	public List<Automobile> trovaTutteLeVettureConIProprietariConCFCheIniziaPer(String inizialeCF) throws Exception;
 
-	public boolean trovaErrori() throws Exception;
+	public List<Automobile> trovaProprietariMinorenni() throws Exception;
 	
 	public void setAutomobileDAO(AutomobileDAO automobileDAO) throws Exception;
 
