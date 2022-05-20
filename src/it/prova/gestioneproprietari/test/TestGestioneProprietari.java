@@ -3,7 +3,6 @@ package it.prova.gestioneproprietari.test;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 import it.prova.gestioneproprietari.dao.EntityManagerUtil;
 import it.prova.gestioneproprietari.model.Proprietario;
@@ -22,7 +21,8 @@ public class TestGestioneProprietari {
 
 			// ora con il service posso fare tutte le invocazioni che mi servono
 			
-			
+			testInserisciProprietario(proprietarioService);
+			System.out.println("In tabella Proprietario ci sono "+ proprietarioService.listAllProprietari().size() + " elementi");
 
 
 		} catch (Throwable e) {
@@ -35,7 +35,23 @@ public class TestGestioneProprietari {
 		
 	}
 	
-	
+	public static void testInserisciProprietario(ProprietarioService proprietarioService) throws Exception{
+		System.out.println("................................... testInserisciProprietario: Inizio..................................");
+		
+		Date dataNascitaProprietario = null; 
+		dataNascitaProprietario = new SimpleDateFormat("dd/MM/yyyy").parse("14/08/1983");
+		
+		Proprietario nuovoProprietario = new Proprietario("Gianluca", "Canves", "CNSGNC83S14W298V", dataNascitaProprietario);
+		if(nuovoProprietario.getId() != null) 
+			throw new RuntimeException("testInserisciProprietario fallito: record già presente ");
+		
+		proprietarioService.inserisciNuovo(nuovoProprietario);
+		
+		if(nuovoProprietario.getId() == null)
+			throw new Exception("testInserisciProprietario fallito ");
+		
+		System.out.println("................................... testInserisciProprietario: Fine..................................");
+	}
 	
 	
 	
