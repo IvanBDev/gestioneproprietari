@@ -37,9 +37,9 @@ public class TestGestioneProprietari {
 			
 			//testCaricaSingoloProprietario(proprietarioService);
 			
-			//testcaricaSingolaAutomobile(automobileService);
+			//testCaricaSingolaAutomobile(automobileService);
 			
-			
+			testAggiornaRecordProprietario(proprietarioService);
 			
 			
 			
@@ -127,7 +127,7 @@ public class TestGestioneProprietari {
 				"................................... testCaricaSingoloProprietario: Fine..................................");
 	}
 	
-	public static void testcaricaSingolaAutomobile(AutomobileService automobileService) throws Exception{
+	public static void testCaricaSingolaAutomobile(AutomobileService automobileService) throws Exception{
 		System.out.println(
 				"................................... testcaricaSingolaAutomobile: Inzio..................................");
 		
@@ -141,6 +141,31 @@ public class TestGestioneProprietari {
 		
 		System.out.println(
 				"................................... testcaricaSingolaAutomobile: Fine..................................");
+	}
+	
+	public static void testAggiornaRecordProprietario(ProprietarioService proprietarioService) throws Exception{
+		System.out.println(
+				"................................... testAggiornaRecordProprietario: Inzio..................................");
+		
+		List<Proprietario> listaProprietari = proprietarioService.listAllProprietari();
+		if(listaProprietari.isEmpty())
+			throw new RuntimeException("Non ci sono proprietari nel DB");
+		
+		Date dataAggiornaProprietario = null;
+		dataAggiornaProprietario = new SimpleDateFormat("dd/MM/yyyy").parse("18/04/2006");
+		
+		int idAggiornaProprietario = 2;
+		Proprietario aggiornaProprietaro = listaProprietari.get(idAggiornaProprietario);	
+		//Qui si puà decidere cosa modificare
+		//aggiornaProprietaro.setNome(null);
+		//aggiornaProprietaro.setCognome(null);
+		//aggiornaProprietaro.setCodiceFiscale(null);
+		aggiornaProprietaro.setDataNascita(dataAggiornaProprietario);
+		
+		proprietarioService.aggiorna(aggiornaProprietaro);
+		
+		System.out.println(
+				"................................... testAggiornaRecordProprietario: Inzio..................................");
 	}
 	
 	
