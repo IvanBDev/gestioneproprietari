@@ -27,9 +27,9 @@ public class TestGestioneProprietari {
 			System.out.println(
 					"In tabella Automobile ci sono " + automobileService.listAllAutomobili().size() + " elementi");
 
-			/*testInserisciProprietario(proprietarioService);
+			testInserisciProprietario(proprietarioService);
 			System.out.println(
-					"In tabella Proprietario ci sono " + proprietarioService.listAllProprietari().size() + " elementi");*/
+					"In tabella Proprietario ci sono " + proprietarioService.listAllProprietari().size() + " elementi");
 			
 			/*testInserisciAutomobile(automobileService, proprietarioService);
 			System.out.println(
@@ -39,7 +39,7 @@ public class TestGestioneProprietari {
 			
 			//testCaricaSingolaAutomobile(automobileService);
 			
-			testAggiornaRecordProprietario(proprietarioService);
+			//testAggiornaRecordProprietario(proprietarioService);
 			
 			
 			
@@ -66,9 +66,9 @@ public class TestGestioneProprietari {
 				"................................... testInserisciProprietario: Inizio..................................");
 
 		Date dataNascitaProprietario = null;
-		dataNascitaProprietario = new SimpleDateFormat("dd/MM/yyyy").parse("19/04/2000");
+		dataNascitaProprietario = new SimpleDateFormat("dd/MM/yyyy").parse("01/01/2022");
 
-		Proprietario nuovoProprietario = new Proprietario("Luigi", "Verdi", "VRELGU00J19O952D",
+		Proprietario nuovoProprietario = new Proprietario("Prova", "ProvaProva", "PPPPPPPPPPPPPP",
 				dataNascitaProprietario);
 		if (nuovoProprietario.getId() != null)
 			throw new RuntimeException("testInserisciProprietario fallito: record già presente ");
