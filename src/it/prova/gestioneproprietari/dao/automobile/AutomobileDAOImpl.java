@@ -2,6 +2,10 @@ package it.prova.gestioneproprietari.dao.automobile;
 
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+
+import org.apache.commons.lang3.reflect.Typed;
+
 import it.prova.gestioneproprietari.model.Automobile;
 
 public class AutomobileDAOImpl implements AutomobileDAO {
@@ -54,7 +58,8 @@ public class AutomobileDAOImpl implements AutomobileDAO {
 	@Override
 	public List<Automobile> findAllOwnersThatHaveCFStartsWith(String inizialeCF) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		TypedQuery<Automobile> query = entityManager.createQuery("SELECT DISTINCT a FROM Automobile a JOIN a.proprietario p WHERE p.codiceFiscale = ?1", Automobile.class);
+		return query.setParameter(1, inizialeCF).getResultList();
 	}
 
 	@Override
