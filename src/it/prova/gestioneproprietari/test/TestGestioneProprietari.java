@@ -27,9 +27,9 @@ public class TestGestioneProprietari {
 			System.out.println(
 					"In tabella Automobile ci sono " + automobileService.listAllAutomobili().size() + " elementi");
 
-			testInserisciProprietario(proprietarioService);
+			/*testInserisciProprietario(proprietarioService);
 			System.out.println(
-					"In tabella Proprietario ci sono " + proprietarioService.listAllProprietari().size() + " elementi");
+					"In tabella Proprietario ci sono " + proprietarioService.listAllProprietari().size() + " elementi");*/
 			
 			/*testInserisciAutomobile(automobileService, proprietarioService);
 			System.out.println(
@@ -41,7 +41,7 @@ public class TestGestioneProprietari {
 			
 			//testAggiornaRecordProprietario(proprietarioService);
 			
-			
+			testAggiornaRecordAutomobile(proprietarioService, automobileService);
 			
 			
 			
@@ -153,8 +153,8 @@ public class TestGestioneProprietari {
 		
 		Date dataAggiornaProprietario = null;
 		dataAggiornaProprietario = new SimpleDateFormat("dd/MM/yyyy").parse("18/04/2006");
-		
 		int idAggiornaProprietario = 2;
+		
 		Proprietario aggiornaProprietaro = listaProprietari.get(idAggiornaProprietario);	
 		//Qui si puà decidere cosa modificare
 		//aggiornaProprietaro.setNome(null);
@@ -168,7 +168,30 @@ public class TestGestioneProprietari {
 				"................................... testAggiornaRecordProprietario: Inzio..................................");
 	}
 	
-	
+	public static void testAggiornaRecordAutomobile(ProprietarioService proprietarioService, AutomobileService automobileService) throws Exception{
+		System.out.println(
+				"................................... testAggiornaRecordAutomobile: Inzio..................................");
+		
+		List<Proprietario> listaProprietrai = proprietarioService.listAllProprietari();
+		if (listaProprietrai.isEmpty())
+			throw new RuntimeException("testAggiornaAutomobile fallito: non ci sono proprietari a cui collegarci ");
+		
+		Date dataAggiornaAutomobile = null;
+		dataAggiornaAutomobile = new SimpleDateFormat("dd/MM/yyyy").parse("18/04/2006");
+		int idAggiornaAutomobile = 5;
+		
+		Automobile aggiornaAutomobile = automobileService.listAllAutomobili().get(idAggiornaAutomobile);
+		//Qui si puà decidere cosa modificare
+		//aggiornaAutomobile.setMarca(null);
+		aggiornaAutomobile.setModello("Compact");
+		//aggiornaAutomobile.setTarga(null);
+		//aggiornaAutomobile.setAnnoImmatricolazione(dataAggiornaAutomobile);
+		
+		automobileService.aggiorna(aggiornaAutomobile);
+		
+		System.out.println(
+				"................................... testAggiornaRecordAutomobile: Inzio..................................");
+	}
 	
 	
 	
