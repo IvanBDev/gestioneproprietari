@@ -35,9 +35,9 @@ public class TestGestioneProprietari {
 			System.out.println(
 					"In tabella Automobile ci sono " + automobileService.listAllAutomobili().size() + " elementi");*/
 			
-			testCaricaSingoloProprietario(proprietarioService);
+			//testCaricaSingoloProprietario(proprietarioService);
 			
-			
+			//testcaricaSingolaAutomobile(automobileService);
 			
 			
 			
@@ -127,6 +127,21 @@ public class TestGestioneProprietari {
 				"................................... testCaricaSingoloProprietario: Fine..................................");
 	}
 	
+	public static void testcaricaSingolaAutomobile(AutomobileService automobileService) throws Exception{
+		System.out.println(
+				"................................... testcaricaSingolaAutomobile: Inzio..................................");
+		
+		List<Automobile> listaAutomobili = automobileService.listAllAutomobili();
+		if(listaAutomobili.isEmpty())
+			throw new RuntimeException("Non ci sono automobili nel DB");
+		
+		Long idRicercaAutomobile = 6L;
+		
+		System.out.println(automobileService.caricaSingolaAutomobile(idRicercaAutomobile));
+		
+		System.out.println(
+				"................................... testcaricaSingolaAutomobile: Fine..................................");
+	}
 	
 	
 	
