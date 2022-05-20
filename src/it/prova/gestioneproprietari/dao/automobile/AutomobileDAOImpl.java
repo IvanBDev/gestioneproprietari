@@ -71,7 +71,7 @@ public class AutomobileDAOImpl implements AutomobileDAO {
 		Date annoMinorenni = null;
 		annoMinorenni = new SimpleDateFormat("dd/MM/yyyy").parse("01/01/2004");
 		
-		TypedQuery<Automobile> query = entityManager.createQuery("FROM Automobile a JOIN a.proprietario p WHERE p.dataNascita <= ?1", Automobile.class);
+		TypedQuery<Automobile> query = entityManager.createQuery("SELECT DISTINCT a FROM Automobile a JOIN a.proprietario p WHERE p.dataNascita <= ?1", Automobile.class);
 		return query.setParameter(1, annoMinorenni).getResultList();
 	}
 

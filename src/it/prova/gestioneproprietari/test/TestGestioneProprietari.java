@@ -49,9 +49,9 @@ public class TestGestioneProprietari {
 			
 			//testTrovaProprietariConAutomobileImmatricolataDa(proprietarioService, automobileService);
 			
-			testTrovaTutteLeVettureConIProprietariConCFCheIniziaPer(automobileService, proprietarioService);
+			//testTrovaTutteLeVettureConIProprietariConCFCheIniziaPer(automobileService, proprietarioService);
 			
-			
+			testTrovaProprietariMinorenni(automobileService);
 
 		} catch (Throwable e) {
 			e.printStackTrace();
@@ -274,7 +274,20 @@ public class TestGestioneProprietari {
 				"................................... testTrovaTutteLeVettureConIProprietariConCFCheIniziaPer: Fine..................................");
 	}
 	
-	
+	public static void testTrovaProprietariMinorenni(AutomobileService automobileService) throws Exception{
+		System.out.println(
+				"................................... testTrovaProprietariMinorenni: Inizio..................................");
+		
+		if(automobileService.trovaProprietariMinorenni() != null) {
+			System.out.println("Non ci sono proprietari minorenni");
+		}
+		else{
+			System.out.println("Ci sono proprietari minorenni");
+		}
+		
+		System.out.println(
+				"................................... testTrovaProprietariMinorenni: Fine..................................");
+	}
 	
 	
 	
