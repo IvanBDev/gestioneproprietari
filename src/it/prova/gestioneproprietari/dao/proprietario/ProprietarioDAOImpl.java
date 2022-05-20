@@ -24,7 +24,7 @@ public class ProprietarioDAOImpl implements ProprietarioDAO{
 	@Override
 	public Proprietario get(Long id) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return entityManager.find(Proprietario.class, id);
 	}
 
 	@Override
