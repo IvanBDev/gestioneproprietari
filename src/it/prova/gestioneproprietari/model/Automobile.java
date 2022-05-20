@@ -30,6 +30,7 @@ public class Automobile {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "automobile_id")
 	private Proprietario proprietario;
+
 	public Automobile(Long id, String marca, String modello, String targa, Date annoImmatricolazione,
 			Proprietario proprietario) {
 		super();
@@ -40,52 +41,81 @@ public class Automobile {
 		this.annoImmatricolazione = annoImmatricolazione;
 		this.proprietario = proprietario;
 	}
+
+	public Automobile(String marca, String modello, String targa, Date annoImmatricolazione) {
+		super();
+		this.marca = marca;
+		this.modello = modello;
+		this.targa = targa;
+		this.annoImmatricolazione = annoImmatricolazione;
+	}
+
+	public Automobile(String marca, String modello, String targa, Date annoImmatricolazione,
+			Proprietario proprietario) {
+		super();
+		this.marca = marca;
+		this.modello = modello;
+		this.targa = targa;
+		this.annoImmatricolazione = annoImmatricolazione;
+		this.proprietario = proprietario;
+	}
+
 	public Automobile() {
 		super();
 	}
+
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public String getMarca() {
 		return marca;
 	}
+
 	public void setMarca(String marca) {
 		this.marca = marca;
 	}
+
 	public String getModello() {
 		return modello;
 	}
+
 	public void setModello(String modello) {
 		this.modello = modello;
 	}
+
 	public String getTarga() {
 		return targa;
 	}
+
 	public void setTarga(String targa) {
 		this.targa = targa;
 	}
+
 	public Date getAnnoImmatricolazione() {
 		return annoImmatricolazione;
 	}
+
 	public void setAnnoImmatricolazione(Date annoImmatricolazione) {
 		this.annoImmatricolazione = annoImmatricolazione;
 	}
+
 	public Proprietario getProprietario() {
 		return proprietario;
 	}
+
 	public void setProprietario(Proprietario proprietario) {
 		this.proprietario = proprietario;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Proprietario [id=" + id + ", marca=" + marca + ", modello=" + modello + ", traga=" + targa + ", annoImmatricolazione="
-				+ annoImmatricolazione + "]";
+		return "Proprietario [id=" + id + ", marca=" + marca + ", modello=" + modello + ", traga=" + targa
+				+ ", annoImmatricolazione=" + annoImmatricolazione + "]";
 	}
-	
-	
 
 }
