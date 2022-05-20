@@ -41,9 +41,9 @@ public class TestGestioneProprietari {
 			
 			//testAggiornaRecordProprietario(proprietarioService);
 			
-			testAggiornaRecordAutomobile(proprietarioService, automobileService);
+			//testAggiornaRecordAutomobile(proprietarioService, automobileService);
 			
-			
+			testRimuoviProprietario(proprietarioService);
 			
 			
 			
@@ -190,10 +190,30 @@ public class TestGestioneProprietari {
 		automobileService.aggiorna(aggiornaAutomobile);
 		
 		System.out.println(
-				"................................... testAggiornaRecordAutomobile: Inzio..................................");
+				"................................... testAggiornaRecordAutomobile: Fine..................................");
 	}
 	
-	
+	public static void testRimuoviProprietario(ProprietarioService proprietarioService) throws Exception{
+		System.out.println(
+				"................................... testRimuoviProprietario: Inzio..................................");
+		
+		List<Proprietario> listaProprietrai = proprietarioService.listAllProprietari();
+		if (listaProprietrai.isEmpty())
+			throw new RuntimeException("testAggiornaAutomobile fallito: non ci sono proprietari a cui collegarci ");
+		
+		Date dataProprietarioDaRimuovere = null;
+		dataProprietarioDaRimuovere = new SimpleDateFormat("dd/MM/yyyy").parse("31/12/2021");
+		
+		Proprietario proprietarioDaRimuovere = new Proprietario(4L, "Prova", "ProvaProva", "PPPPPPPPPPPPPP", dataProprietarioDaRimuovere);
+		
+		proprietarioService.rimuovi(proprietarioDaRimuovere);
+		
+		if(proprietarioService.caricaSingoloProprietario(proprietarioDaRimuovere.getId()) != null)
+			throw new RuntimeException("testRimuoviProprietario fallito: record non cancellato ");
+		
+		System.out.println(
+				"................................... testRimuoviProprietario: Fine..................................");
+	}
 	
 	
 	

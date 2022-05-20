@@ -50,6 +50,15 @@ public class Proprietario {
 		this.dataNascita = dataNascita;
 	}
 
+	public Proprietario(Long id, String nome, String cognome, String codiceFiscale, Date dataNascita) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.cognome = cognome;
+		this.codiceFiscale = codiceFiscale;
+		this.dataNascita = dataNascita;
+	}
+
 	public Proprietario() {
 		super();
 	}
