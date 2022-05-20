@@ -31,9 +31,12 @@ public class AutomobileDAOImpl implements AutomobileDAO {
 	}
 
 	@Override
-	public void insert(Automobile automobile) throws Exception {
+	public void insert(Automobile automobileInstance) throws Exception {
 		// TODO Auto-generated method stub
-
+		if(automobileInstance == null)
+			throw new Exception("Valore in input non valido");
+		
+		entityManager.persist(automobileInstance);
 	}
 
 	@Override
