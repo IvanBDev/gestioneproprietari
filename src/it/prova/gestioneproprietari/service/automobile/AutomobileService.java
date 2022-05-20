@@ -17,7 +17,7 @@ public interface AutomobileService {
 
 	public void rimuovi(Automobile automobile) throws Exception;
 
-	public List<Automobile> trovaTuttiIProprietariConIlCFCheIniziaCon(String inizialeCF) throws Exception;
+	public List<Automobile> trovaTutteLeVettureConIProprietariConCFCheIniziaPer(String inizialeCF) throws Exception;
 
 	public boolean trovaErrori() throws Exception;
 	

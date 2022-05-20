@@ -31,35 +31,37 @@ public class AutomobileDAOImpl implements AutomobileDAO {
 	@Override
 	public void update(Automobile automobileInstance) throws Exception {
 		// TODO Auto-generated method stub
-		if(automobileInstance == null)
+		if (automobileInstance == null)
 			throw new Exception("Valore in input non valido");
-		
+
 		entityManager.merge(automobileInstance);
 	}
 
 	@Override
 	public void insert(Automobile automobileInstance) throws Exception {
 		// TODO Auto-generated method stub
-		if(automobileInstance == null)
+		if (automobileInstance == null)
 			throw new Exception("Valore in input non valido");
-		
+
 		entityManager.persist(automobileInstance);
 	}
 
 	@Override
 	public void delete(Automobile automobileInstance) throws Exception {
 		// TODO Auto-generated method stub
-		if(automobileInstance == null)
+		if (automobileInstance == null)
 			throw new Exception("Valore in input non valido");
-		
+
 		entityManager.remove(entityManager.merge(automobileInstance));
 	}
 
 	@Override
 	public List<Automobile> findAllOwnersThatHaveCFStartsWith(String inizialeCF) throws Exception {
 		// TODO Auto-generated method stub
-		TypedQuery<Automobile> query = entityManager.createQuery("SELECT DISTINCT a FROM Automobile a JOIN a.proprietario p WHERE p.codiceFiscale = ?1", Automobile.class);
-		return query.setParameter(1, inizialeCF).getResultList();
+		TypedQuery<Automobile> query = entityManager.createQuery(
+				"SELECT DISTINCT  a FROM Automobile a JOIN a.proprietario p WHERE p.codiceFiscale LIKE ?1",
+				Automobile.class);
+		return query.setParameter(1, inizialeCF + "%").getResultList();
 	}
 
 	@Override

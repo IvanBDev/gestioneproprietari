@@ -49,6 +49,8 @@ public class TestGestioneProprietari {
 			
 			//testTrovaProprietariConAutomobileImmatricolataDa(proprietarioService, automobileService);
 			
+			testTrovaTutteLeVettureConIProprietariConCFCheIniziaPer(automobileService, proprietarioService);
+			
 			
 
 		} catch (Throwable e) {
@@ -253,6 +255,23 @@ public class TestGestioneProprietari {
 		
 		System.out.println(
 				"................................... testTrovaProprietariConAutomobileImmatricolataDa: Inzio..................................");
+	}
+	
+	public static void testTrovaTutteLeVettureConIProprietariConCFCheIniziaPer(AutomobileService automobileService, ProprietarioService proprietarioService) throws Exception{
+		System.out.println(
+				"................................... testTrovaTutteLeVettureConIProprietariConCFCheIniziaPer: Inzio..................................");
+		
+		String inizialeCF = "CN";
+		
+		List<Automobile> listAutomobili = automobileService.listAllAutomobili();
+		listAutomobili = automobileService.trovaTutteLeVettureConIProprietariConCFCheIniziaPer(inizialeCF);
+		System.out.println(listAutomobili.size());
+		for (Automobile automobiliItem :listAutomobili) {
+			System.out.println(automobiliItem);
+		}
+		
+		System.out.println(
+				"................................... testTrovaTutteLeVettureConIProprietariConCFCheIniziaPer: Fine..................................");
 	}
 	
 	

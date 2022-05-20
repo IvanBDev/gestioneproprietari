@@ -139,7 +139,7 @@ public class AutomobileServiceImpl implements AutomobileService {
 	}
 
 	@Override
-	public List<Automobile> trovaTuttiIProprietariConIlCFCheIniziaCon(String inizialeCF) throws Exception {
+	public List<Automobile> trovaTutteLeVettureConIProprietariConCFCheIniziaPer(String inizialeCF) throws Exception {
 		// TODO Auto-generated method stub
 		// questo è come una connection
 		EntityManager entityManager = EntityManagerUtil.getEntityManager();

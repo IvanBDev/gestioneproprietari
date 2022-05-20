@@ -9,6 +9,6 @@ public interface AutomobileDAO extends IBaseDAO<Automobile>{
 	
 	public List<Automobile> findAllOwnersThatHaveCFStartsWith(String inizialeCF) throws Exception;
 	
-	public boolean findErrors() throws Exception;
+	public List<Automobile> findAllOwnersUnderAge() throws Exception;
 	
 }
