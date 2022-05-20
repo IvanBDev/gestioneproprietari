@@ -141,7 +141,22 @@ public class AutomobileServiceImpl implements AutomobileService {
 	@Override
 	public List<Automobile> trovaTuttiIProprietariConIlCFCheIniziaCon(String inizialeCF) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		// questo è come una connection
+		EntityManager entityManager = EntityManagerUtil.getEntityManager();
+
+		try {
+			// uso l'injection per il dao
+			automobileDAO.setEntityManager(entityManager);
+
+			// eseguo quello che realmente devo fare
+			return automobileDAO.findAllOwnersThatHaveCFStartsWith(inizialeCF);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		} finally {
+			EntityManagerUtil.closeEntityManager(entityManager);
+		}
 	}
 
 	@Override
