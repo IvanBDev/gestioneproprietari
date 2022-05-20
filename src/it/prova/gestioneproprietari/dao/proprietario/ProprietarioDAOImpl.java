@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 
 import it.prova.gestioneproprietari.model.Proprietario;
 
@@ -57,7 +58,9 @@ public class ProprietarioDAOImpl implements ProprietarioDAO{
 	@Override
 	public List<Proprietario> findAllOwnersHaveCarsImmatricolataDa(Date dataInput) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		TypedQuery<Proprietario> query = entityManager.createQuery("FROM Automobile a JOIN a.automobile WHERE a.annoImmatricolazione > ?1", Proprietario.class);
+		
+		return query.setParameter(1, dataInput).getResultList();
 	}
 
 }
